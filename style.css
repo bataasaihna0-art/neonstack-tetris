@@ -153,6 +153,59 @@ footer {
   font-size: 10px;
 }
 
+/* Mobile-friendly Tetris controls */
+#mobile-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 360px;
+  margin: 18px auto;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.control-row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+#mobile-controls button {
+  flex: 1;
+  min-height: 56px;
+  padding: 12px 8px;
+  border: 2px solid #00e5ff;
+  border-radius: 14px;
+  background: #172033;
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#mobile-controls button:active {
+  background: #00a8cc;
+  transform: scale(0.96);
+}
+
+canvas {
+  max-width: 100%;
+}
+
+@media (max-width: 600px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  #mobile-controls button {
+    font-size: 15px;
+    min-height: 60px;
+  }
+}
+
+
 @media (max-width: 900px) {
   #player .dashboard { grid-template-columns: 1fr 1fr; }
   .game { grid-row: 1; grid-column: 1 / -1; }
