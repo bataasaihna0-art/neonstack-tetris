@@ -69,6 +69,20 @@
           </div>
           <div class="board-wrap">
             <canvas id="board" width="300" height="600"></canvas>
+            
+<div id="mobile-controls">
+  <div class="control-row">
+    <button onclick="moveLeft()">⬅️</button>
+    <button onclick="rotatePiece()">🔄</button>
+    <button onclick="moveRight()">➡️</button>
+  </div>
+
+  <div class="control-row">
+    <button onclick="moveDown()">⬇️ Доош</button>
+    <button onclick="hardDrop()">⚡ Шууд буулгах</button>
+  </div>
+</div>
+
             <div id="overlay">
               <h2>Өрөхөд бэлэн үү?</h2>
               <button id="start" class="primary">Start game</button>
