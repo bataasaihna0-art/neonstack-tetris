@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEONSTACK Tetris</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h2>▦ NEON<span>STACK</span></h2>
+    <div>
+      <span id="session">NOT SIGNED IN</span>
+      <button id="logout" class="hidden">Log out</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="auth">
+      <h1>Stack smart.<br><span>Beat the board.</span></h1>
+      <div class="panel auth-panel">
+        <div class="tabs">
+          <button id="login-tab" class="active">Log in</button>
+          <button id="signup-tab">Create account</button>
+        </div>
+        <form id="auth-form">
+          <label for="username">NAME</label>
+          <input id="username" maxlength="18" placeholder="Enter your name" required>
+          <label for="password">PASSWORD</label>
+          <input id="password" type="password" placeholder="Enter your password" required>
+          <p id="message"></p>
+          <button class="primary" id="auth-submit">Log in →</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="player" class="hidden">
+      <h1>Welcome, <span id="player-name"></span>!</h1>
+      <div class="dashboard">
+        <aside>
+          <div class="panel">
+            <small>YOUR SCORE</small>
+            <h2 id="score">0</h2>
+          </div>
+          <div class="panel">
+            <small>PERSONAL HIGH SCORE</small>
+            <h2 id="best">0</h2>
+          </div>
+          <div class="panel">
+            <small>NEXT BLOCK</small>
+            <canvas id="next" width="120" height="120"></canvas>
+          </div>
+          <div class="panel">
+            <small>CONTROLS</small>
+            <p>← → Move</p>
+            <p>↑ Rotate</p>
+            <p>↓ Soft drop</p>
+            <p>Space Hard drop</p>
+            <p>P Pause · R Restart</p>
+          </div>
+        </aside>
+
+        <div class="panel game">
+          <div class="game-info">
+            <span>LINES: <b id="lines">0</b></span>
+            <span>LEVEL: <b id="level">1</b></span>
+            <span>TIME: <b id="time">00:00</b></span>
+          </div>
+          <div class="board-wrap">
+            <canvas id="board" width="300" height="600"></canvas>
+            <div id="overlay">
+              <h2>Ready to stack?</h2>
+              <button id="start" class="primary">Start game</button>
+            </div>
+          </div>
+          <button id="pause">Pause</button>
+        </div>
+
+        <div class="panel leaderboard">
+          <h3>Top players</h3>
+          <div id="leaderboard"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="admin" class="hidden">
+      <h1>Admin Dashboard</h1>
+      <div class="admin-stats">
+        <div class="panel">
+          <small>REGISTERED USERS</small>
+          <h2 id="users-count">0</h2>
+        </div>
+        <div class="panel">
+          <small>GAMES PLAYED</small>
+          <h2 id="games-count">0</h2>
+        </div>
+        <div class="panel">
+          <small>TOP SCORE</small>
+          <h2 id="top-score">0</h2>
+          <p id="top-player"></p>
+        </div>
+      </div>
+      <div class="panel table-panel">
+        <h3>Users and high scores</h3>
+        <div class="scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Player</th>
+                <th>High score</th>
+                <th>Games</th>
+                <th>Joined</th>
+              </tr>
+            </thead>
+            <tbody id="users-table"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>NEONSTACK · TETRIS · 2026</footer>
+  <script src="script.js"></script>
+</body>
+</html>
