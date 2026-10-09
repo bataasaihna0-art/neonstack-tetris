@@ -4,15 +4,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NEONSTACK Tetris</title>
+  <title>Tetris</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <h2>▦ NEON<span>STACK</span></h2>
+    <h2>▦ NUJA's<span>Tetris</span></h2>
     <div>
-      <span id="session">NOT SIGNED IN</span>
-      <button id="logout" class="hidden">Log out</button>
+      <span id="session">Нэвтэрж ороогүй байна</span>
+      <button id="logout" class="hidden">Гарах</button>
     </div>
   </header>
 
@@ -21,34 +21,34 @@
       <h1>Stack smart.<br><span>Beat the board.</span></h1>
       <div class="panel auth-panel">
         <div class="tabs">
-          <button id="login-tab" class="active">Log in</button>
-          <button id="signup-tab">Create account</button>
+          <button id="login-tab" class="active">Нэвтэрж орно уу</button>
+          <button id="signup-tab">Шинэ хэрэглэгч</button>
         </div>
         <form id="auth-form">
-          <label for="username">NAME</label>
+          <label for="username">Нэр</label>
           <input id="username" maxlength="18" placeholder="Enter your name" required>
-          <label for="password">PASSWORD</label>
+          <label for="password">Нууц үг</label>
           <input id="password" type="password" placeholder="Enter your password" required>
           <p id="message"></p>
-          <button class="primary" id="auth-submit">Log in →</button>
+          <button class="primary" id="auth-submit">Нэвтрэх →</button>
         </form>
       </div>
     </section>
 
     <section id="player" class="hidden">
-      <h1>Welcome, <span id="player-name"></span>!</h1>
+      <h1>Сайн уу, <span id="player-name"></span>!</h1>
       <div class="dashboard">
         <aside>
           <div class="panel">
-            <small>YOUR SCORE</small>
+            <small>ЧИНИЙ ОНОО</small>
             <h2 id="score">0</h2>
           </div>
           <div class="panel">
-            <small>PERSONAL HIGH SCORE</small>
+            <small>ХУВИЙН ДЭЭД ОНОО</small>
             <h2 id="best">0</h2>
           </div>
           <div class="panel">
-            <small>NEXT BLOCK</small>
+            <small>ДАРААГИЙН БЛОК</small>
             <canvas id="next" width="120" height="120"></canvas>
           </div>
           <div class="panel">
@@ -70,15 +70,15 @@
           <div class="board-wrap">
             <canvas id="board" width="300" height="600"></canvas>
             <div id="overlay">
-              <h2>Ready to stack?</h2>
+              <h2>Өрөхөд бэлэн үү?</h2>
               <button id="start" class="primary">Start game</button>
             </div>
           </div>
-          <button id="pause">Pause</button>
+          <button id="pause">Зогсоох</button>
         </div>
 
         <div class="panel leaderboard">
-          <h3>Top players</h3>
+          <h3>Тэргүүлэгчид</h3>
           <div id="leaderboard"></div>
         </div>
       </div>
@@ -88,21 +88,21 @@
       <h1>Admin Dashboard</h1>
       <div class="admin-stats">
         <div class="panel">
-          <small>REGISTERED USERS</small>
+          <small>ХЭРЭГЛЭГЧИД</small>
           <h2 id="users-count">0</h2>
         </div>
         <div class="panel">
-          <small>GAMES PLAYED</small>
+          <small>ТОГЛОСОН</small>
           <h2 id="games-count">0</h2>
         </div>
         <div class="panel">
-          <small>TOP SCORE</small>
+          <small>ДЭЭД ОНОО</small>
           <h2 id="top-score">0</h2>
           <p id="top-player"></p>
         </div>
       </div>
       <div class="panel table-panel">
-        <h3>Users and high scores</h3>
+        <h3>Хэрэглэгчид болон дээд оноо</h3>
         <div class="scroll">
           <table>
             <thead>
@@ -121,7 +121,7 @@
     </section>
   </main>
 
-  <footer>NEONSTACK · TETRIS · 2026</footer>
+  <footer>NUJA's · TETRIS · 2026</footer>
   <script src="script.js"></script>
 </body>
 </html>
