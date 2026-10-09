@@ -455,3 +455,11 @@ document.addEventListener("keydown", event => {
   else if (event.key.toLowerCase() === "p") $("pause").click();
   else if (event.key.toLowerCase() === "r") startGame();
 });
+
+document.querySelectorAll("#mobile-controls button")
+  .forEach((button) => {
+    button.addEventListener("contextmenu", (event) => {
+      event.preventDefault();
+    });
+  });
+
