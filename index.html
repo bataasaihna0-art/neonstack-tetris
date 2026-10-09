@@ -3,139 +3,105 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tetris</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NUJA Tetris</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h2>▦ NUJA's<span>Tetris</span></h2>
-    <div>
-      <span id="session">Нэвтэрж ороогүй байна</span>
-      <button id="logout" class="hidden">Гарах</button>
-    </div>
-  </header>
-
-  <main>
-    <section id="auth">
-      <h1>Stack smart.<br><span>Beat the board.</span></h1>
-      <div class="panel auth-panel">
-        <div class="tabs">
-          <button id="login-tab" class="active">Нэвтэрж орно уу</button>
-          <button id="signup-tab">Шинэ хэрэглэгч</button>
-        </div>
-        <form id="auth-form">
-          <label for="username">Нэр</label>
-          <input id="username" maxlength="18" placeholder="Enter your name" required>
-          <label for="password">Нууц үг</label>
-          <input id="password" type="password" placeholder="Enter your password" required>
-          <p id="message"></p>
-          <button class="primary" id="auth-submit">Нэвтрэх →</button>
-        </form>
+  <main class="app">
+    <header class="topbar">
+      <div class="logo">N</div>
+      <div>
+        <h1>NUJA <span>TETRIS</span></h1>
+        <p>Stack it. Clear it. Beat your best.</p>
       </div>
+    </header>
+
+    <section id="auth-screen" class="panel">
+      <h2 id="auth-title">Welcome back</h2>
+      <div class="tabs">
+        <button id="login-tab" class="active">Log in</button>
+        <button id="signup-tab">Sign up</button>
+      </div>
+      <form id="auth-form">
+        <label>Username</label>
+        <input id="username" required minlength="3" maxlength="20">
+        <label>Password</label>
+        <input id="password" type="password" required>
+        <button id="auth-submit" class="primary">Log in</button>
+        <p id="auth-message"></p>
+      </form>
     </section>
 
-    <section id="player" class="hidden">
-      <h1>Сайн уу, <span id="player-name"></span>!</h1>
-      <div class="dashboard">
-        <aside>
-          <div class="panel">
-            <small>ЧИНИЙ ОНОО</small>
-            <h2 id="score">0</h2>
-          </div>
-          <div class="panel">
-            <small>ХУВИЙН ДЭЭД ОНОО</small>
-            <h2 id="best">0</h2>
-          </div>
-          <div class="panel">
-            <small>ДАРААГИЙН БЛОК</small>
-            <canvas id="next" width="120" height="120"></canvas>
-          </div>
-          <div class="panel">
-            <small>CONTROLS</small>
-            <p>← → Move</p>
-            <p>↑ Rotate</p>
-            <p>↓ Soft drop</p>
-            <p>Space Hard drop</p>
-            <p>P Pause · R Restart</p>
-          </div>
-        </aside>
+    <section id="game-screen" class="hidden">
+      <div class="panel welcome">
+        <div>Signed in as <strong id="current-user"></strong></div>
+        <button id="logout-btn">Log out</button>
+      </div>
 
-        <div class="panel game">
-          <div class="game-info">
-            <span>LINES: <b id="lines">0</b></span>
-            <span>LEVEL: <b id="level">1</b></span>
-            <span>TIME: <b id="time">00:00</b></span>
-          </div>
-          <div class="board-wrap">
-            <canvas id="board" width="300" height="600"></canvas>
-            
-<div id="mobile-controls">
-  <div class="control-row">
-    <button onclick="moveLeft()">⬅️</button>
-    <button onclick="rotatePiece()">🔄</button>
-    <button onclick="moveRight()">➡️</button>
-  </div>
+      <section id="player-view">
+        <div class="stats">
+          <div class="panel">Score<strong id="score">0</strong></div>
+          <div class="panel">Personal best<strong id="high-score">0</strong></div>
+          <div class="panel">Level<strong id="level">1</strong></div>
+        </div>
 
-  <div class="control-row">
-    <button onclick="moveDown()">⬇️ Доош</button>
-    <button onclick="hardDrop()">⚡ Шууд буулгах</button>
-  </div>
-</div>
+        <div class="layout">
+          <section class="panel game-panel">
+            <h2>NUJA Tetris</h2>
+            <p id="game-status">Ready</p>
+            <canvas id="game" width="300" height="600"></canvas>
 
-            <div id="overlay">
-              <h2>Өрөхөд бэлэн үү?</h2>
-              <button id="start" class="primary">Start game</button>
+            <div class="actions">
+              <button id="start-btn" class="primary">Start / Restart</button>
+              <button id="pause-btn">Pause</button>
             </div>
-          </div>
-          <button id="pause">Зогсоох</button>
-        </div>
 
-        <div class="panel leaderboard">
-          <h3>Тэргүүлэгчид</h3>
-          <div id="leaderboard"></div>
-        </div>
-      </div>
-    </section>
+            <div id="mobile-controls">
+              <div class="control-row">
+                <button data-action="left">◀</button>
+                <button data-action="rotate">⟳ Rotate</button>
+                <button data-action="right">▶</button>
+              </div>
+              <div class="control-row">
+                <button data-action="down">▼ Down</button>
+                <button data-action="drop">⚡ Drop</button>
+              </div>
+            </div>
+            <p class="hint">Phone: tap buttons or swipe the board. Keyboard: arrows and Space.</p>
+          </section>
 
-    <section id="admin" class="hidden">
-      <h1>Admin Dashboard</h1>
-      <div class="admin-stats">
-        <div class="panel">
-          <small>ХЭРЭГЛЭГЧИД</small>
-          <h2 id="users-count">0</h2>
+          <aside>
+            <section class="panel">
+              <h3>Next block</h3>
+              <canvas id="next" width="120" height="120"></canvas>
+            </section>
+            <section class="panel">
+              <h3>Top players</h3>
+              <ol id="leaderboard"></ol>
+            </section>
+          </aside>
         </div>
-        <div class="panel">
-          <small>ТОГЛОСОН</small>
-          <h2 id="games-count">0</h2>
+      </section>
+
+      <section id="admin-view" class="panel hidden">
+        <h2>Admin dashboard</h2>
+        <div class="stats">
+          <div class="panel">Users<strong id="user-count">0</strong></div>
+          <div class="panel">Games<strong id="games-count">0</strong></div>
+          <div class="panel">Top score<strong id="admin-top-score">0</strong></div>
         </div>
-        <div class="panel">
-          <small>ДЭЭД ОНОО</small>
-          <h2 id="top-score">0</h2>
-          <p id="top-player"></p>
-        </div>
-      </div>
-      <div class="panel table-panel">
-        <h3>Хэрэглэгчид болон дээд оноо</h3>
-        <div class="scroll">
+        <div class="table-wrap">
           <table>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Player</th>
-                <th>High score</th>
-                <th>Games</th>
-                <th>Joined</th>
-              </tr>
-            </thead>
+            <thead><tr><th>Username</th><th>Best score</th><th>Games</th></tr></thead>
             <tbody id="users-table"></tbody>
           </table>
         </div>
-      </div>
+        <button id="admin-play-btn" class="primary">Open game</button>
+      </section>
     </section>
+    <footer>NUJA Tetris</footer>
   </main>
-
-  <footer>NUJA's · TETRIS · 2026</footer>
   <script src="script.js"></script>
 </body>
 </html>
